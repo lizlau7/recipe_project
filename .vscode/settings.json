@@ -30,6 +30,6 @@
         "venv.bak{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/f3f1d428-2854-4988-9ad8-1e0a7cb5597c/resourceGroups/Project/providers/Microsoft.Web/sites/RecipeProject1",
+    "appService.defaultWebAppToDeploy": "/subscriptions/acf1d143-3a36-4e07-9a7f-690f0ecba45b/resourceGroups/eklau_rg_Linux_centralus/providers/Microsoft.Web/sites/Laurecipes",
     "appService.deploySubpath": "."
 }
