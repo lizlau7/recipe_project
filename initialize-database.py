@@ -79,7 +79,7 @@ def initial_database():
    
     # add recipe
    # chicken_parmesean = add_recipe('Chicken Parmesean', 'Main dishes',
-                                   'chicken', 'cook it good', 'cook it real good', 'Mike', 'Colbert')
+       #                            'chicken', 'cook it good', 'cook it real good', 'Mike', 'Colbert')
 
 
 def main():
