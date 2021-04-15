@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - RecipeProject1
+name: Build and deploy Python app to Azure Web App - recipeproject1
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        python-version: '3.8'
+        python-version: '3.7'
 
     - name: Create and start virtual environment
       run: |
@@ -57,6 +57,6 @@ jobs:
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'RecipeProject1'
+          app-name: 'recipeproject1'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_d63774ab3a0e479e85a95e6f3fe1733b }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_582ae72d2f4740dcaa89b5dfd86b3c13 }}
