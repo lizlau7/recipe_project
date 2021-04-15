@@ -11,6 +11,7 @@ from functools import wraps
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
+gunicorn --bind=0.0.0.0 --timeout 600 app:app 
 ############ TO DO #############
 
 # fix it so contributors can edit and delete their own recipes, but admins can edit and delete everyone's recipes
