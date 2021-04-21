@@ -226,8 +226,8 @@ def admin_add_user():
         }
         users.insert_one(new_user)
         flash(new_user['email'] + ' user has been added.', 'success')
-        return redirect(url_for('admin_users'))
-    return render_template('user-admin.html', all_roles=roles.find(), all_users=users.find())
+        return redirect(url_for('users'))
+    return render_template('user.html', all_roles=roles.find(), all_users=users.find())
 
 
 @app.route('/admin/add-user', methods=['GET', 'POST'])
