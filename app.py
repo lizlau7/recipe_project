@@ -184,7 +184,7 @@ def logout():
 # authenticated users can view their account details
 @app.route('/my-account/<user_id>', methods=['GET', 'POST'])
 @login_required
-@roles_required('user', 'contributor')
+@roles_required('user', 'contributor', 'admin')
 def my_account(user_id):
     edit_account = users.find_one({'_id': ObjectId(user_id)})
     if edit_account:
@@ -195,7 +195,7 @@ def my_account(user_id):
 # authenticated users can update their account details
 @app.route('/update-myaccount/<user_id>', methods=['GET', 'POST'])
 @login_required
-@roles_required('user', 'contributor')
+@roles_required('user', 'contributor', 'admin')
 def update_myaccount(user_id):
     if request.method == 'POST':
         form = request.form
