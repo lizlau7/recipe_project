@@ -204,31 +204,6 @@ def update_myaccount(user_id):
 def admin_users():
     return render_template('user-admin.html', all_roles=roles.find(), all_users=users.find())
 
-@app.route('/register', methods=['GET', 'POST'])
-def admin_add_user():
-    if request.method == 'POST':
-        form = request.form
-        
-        password = request.form['password']
-        
-        email = users.find_one({"email": request.form['email']})
-        if email:
-            flash('This email is already registered.', 'warning')
-            return 'This email has already been registered.'
-        new_user = {
-            'first_name': form['first_name'],
-            'last_name': form['last_name'],
-            'email': form['email'],
-            'password': password,
-            'role': form['role'],
-            'date_added': datetime.datetime.now(),
-            'date_modified': datetime.datetime.now()
-        }
-        users.insert_one(new_user)
-        flash(new_user['email'] + ' user has been added.', 'success')
-        return redirect(url_for('users'))
-    return render_template('user.html', all_roles=roles.find(), all_users=users.find())
-
 
 @app.route('/admin/add-user', methods=['GET', 'POST'])
 @login_required
