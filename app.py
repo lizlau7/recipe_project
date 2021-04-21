@@ -128,7 +128,7 @@ def about():
 # unauthenticated users can see a message on the registration page
 @app.route('/register')
 def register():
-    return render_template 'user-admin.html'
+    return render_template 'contact-admin.html'
 
 # unauthenticated users can view the login page
 @app.route('/login', methods=['GET', 'POST'])
