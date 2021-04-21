@@ -204,7 +204,6 @@ def update_myaccount(user_id):
 def admin_users():
     return render_template('user-admin.html', all_roles=roles.find(), all_users=users.find())
 
-
 @app.route('/admin/add-user', methods=['GET', 'POST'])
 @login_required
 @roles_required('admin')
