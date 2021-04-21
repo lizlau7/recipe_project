@@ -120,15 +120,15 @@ def search():
     print("get request")
     return url_for("index")
 
-# unauthenticated users can view the about page
+# unauthenticated users can view the about page EDITED UNDO by remove render
 @app.route('/about')
 def about():
-    return render_template 'about.html'
+    return 'about.html'
 
-# unauthenticated users can see a message on the registration page
+# unauthenticated users can see a message on the registration page same as above
 @app.route('/register')
 def register():
-    return render_template 'contact-admin.html'
+    return 'contact-admin.html'
 
 # unauthenticated users can view the login page
 @app.route('/login', methods=['GET', 'POST'])
