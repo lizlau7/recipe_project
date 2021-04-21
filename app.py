@@ -123,12 +123,12 @@ def search():
 # unauthenticated users can view the about page
 @app.route('/about')
 def about():
-    return 'about page'
+    return render_template 'about.html'
 
 # unauthenticated users can see a message on the registration page
 @app.route('/register')
 def register():
-    return 'Contact the site administrator for an account.'
+    return render_template 'user-admin.html'
 
 # unauthenticated users can view the login page
 @app.route('/login', methods=['GET', 'POST'])
