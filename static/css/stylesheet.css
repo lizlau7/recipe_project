@@ -6,3 +6,9 @@ label.print{
 body {
   background-color:cornsilk;
 }
+
+header {
+  font-family: fantasy;
+  font-weight: 600;
+  color:midnightblue;
+}
