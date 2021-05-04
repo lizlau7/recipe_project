@@ -11,7 +11,7 @@ from momentjs import momentjs
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-bcrypt=Bcrypt(app)
+bcrypt=bcrypt(app)
 ############ TO DO #############
 
 # fix it so contributors can edit and delete their own recipes, but admins can edit and delete everyone's recipes
