@@ -10,7 +10,7 @@ from functools import wraps
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-
+bcrypt=Bcrypt(app)
 ############ TO DO #############
 
 # fix it so contributors can edit and delete their own recipes, but admins can edit and delete everyone's recipes
@@ -139,7 +139,8 @@ def register():
         form = request.form
         
         password = request.form['password']
-        
+        pwd_hash = bycrpt.generate_password_hash(password)
+
         email = users.find_one({"email": request.form['email']})
         if email:
             flash('This email is already registered.', 'warning')
@@ -148,7 +149,7 @@ def register():
             'first_name': form['first_name'],
             'last_name': form['last_name'],
             'email': form['email'],
-            'password': password,
+            'password': pwd_hash,
             'role': form['role'],
             'date_added': datetime.datetime.now(),
             'date_modified': datetime.datetime.now()
@@ -167,7 +168,7 @@ def login():
 
     if request.method == 'POST':
         user = users.find_one({"email": request.form['username']})
-        if user and user['password'] == request.form['password']:
+        if user and bcyrpt.check_password_hash['password'] == request.form['password']:
             user_obj = User(username=user['email'], role=user['role'], id=user['_id'])
             login_user(user_obj)
             next_page = request.args.get('next')
