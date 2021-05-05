@@ -6,10 +6,11 @@ from bson.objectid import ObjectId
 from flask import Flask, request, render_template, redirect, url_for, session, flash
 from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from functools import wraps
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-
+bcrypt = Bcrypt(app)
 ############ TO DO #############
 
 # fix it so contributors can edit and delete their own recipes, but admins can edit and delete everyone's recipes
@@ -167,7 +168,7 @@ def login():
 
     if request.method == 'POST':
         user = users.find_one({"email": request.form['username']})
-        if user and user['password'] == request.form['password']:
+        if user and bcrypt.check_password_hash(user['password'], request.form['password']):
             user_obj = User(username=user['email'], role=user['role'], id=user['_id'])
             login_user(user_obj)
             next_page = request.args.get('next')
@@ -241,6 +242,7 @@ def admin_add_user():
         form = request.form
         
         password = request.form['password']
+        pwd_hash=bcrypt.generate_password_hash(password)
         
         email = users.find_one({"email": request.form['email']})
         if email:
