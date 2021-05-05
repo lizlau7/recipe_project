@@ -252,7 +252,7 @@ def admin_add_user():
             'first_name': form['first_name'],
             'last_name': form['last_name'],
             'email': form['email'],
-            'password': password,
+            'password': pwd_hash,
             'role': form['role'],
             'date_added': datetime.datetime.now(),
             'date_modified': datetime.datetime.now()
