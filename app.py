@@ -167,7 +167,7 @@ def login():
 
     if request.method == 'POST':
         user = users.find_one({"email": request.form['username']})
-        if user and check_password_hash['password'] == request.form['password']:
+        if user and user['password'] == request.form['password']:
             user_obj = User(username=user['email'], role=user['role'], id=user['_id'])
             login_user(user_obj)
             next_page = request.args.get('next')
