@@ -71,11 +71,11 @@ class User:
     def get_id(self):
         return self.username
 
-'''
+"""
     @staticmethod
     def check_password(password_hash, password):
         return check_password_hash(password_hash, password)
-'''
+"""
 
 @app.errorhandler(404)
 
@@ -168,7 +168,7 @@ def login():
 
     if request.method == 'POST':
         user = users.find_one({"email": request.form['username']})
-       if user and bcrypt.check_password_hash(user['password'], request.form['password']):
+        if user and bcrypt.generate_password_hash(user['password'], request.form['password']):
             user_obj = User(username=user['email'], role=user['role'], id=user['_id'])
             login_user(user_obj)
             next_page = request.args.get('next')
@@ -208,7 +208,7 @@ def update_myaccount(user_id):
     if request.method == 'POST':
         form = request.form
 
-        #password = request.form['password']
+     #   password = request.form['password']
 
         users.update({'_id': ObjectId(user_id)},
             {
